@@ -12,8 +12,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_start_game_clicked()
 {
-    length = 6;
-    time = 6;
     emit start_game();
 }
 

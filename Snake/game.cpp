@@ -18,7 +18,7 @@ Game::~Game()
 void Game::start_game()
 {
     main_window->close();
-    field = new Field(main_window->time, main_window->length);
+    field = new Field();
 }
 
 void Game::quit_game()

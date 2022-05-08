@@ -11,7 +11,7 @@ class Field : public QGraphicsView
 {
     Q_OBJECT
 public:
-    Field(int, int);
+    Field();
     ~Field();
 
 private:

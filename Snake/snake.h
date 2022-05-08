@@ -23,11 +23,10 @@ public:
     bool hit_poison() const;
     void collision();
 
-    bool poisoned;
+    long int xdir;
+    long int ydir;
 
-    QPointF get_head() const { return head; }
-    int get_xdir() const { return xdir; }
-    int get_ydir() const { return ydir; }
+    bool poisoned;
 
     void move();
     void move_W();
@@ -46,8 +45,6 @@ private:
     long int speed;
 
     Directions direction;
-    long int xdir;
-    long int ydir;
 
     long int length;
     long int growing;

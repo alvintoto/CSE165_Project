@@ -2,7 +2,7 @@
 
 static int zero = 0;
 
-Field::Field(int time, int length)
+Field::Field()
 {
     scene = new QGraphicsScene();
     setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -11,7 +11,7 @@ Field::Field(int time, int length)
     setFixedSize(Resolution::field_width, Resolution::field_height);
     setSceneRect(zero, zero, Resolution::field_width, Resolution::field_height);
 
-    controller = new Controller{scene, nullptr, time, length};
+    controller = new Controller{scene, nullptr, 6, 6};
 
     show();
 }

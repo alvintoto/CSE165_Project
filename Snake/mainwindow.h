@@ -17,9 +17,6 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    long int time;
-    long int length;
-
 private:
     Ui::MainWindow ui;
 

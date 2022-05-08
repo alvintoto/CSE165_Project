@@ -21,7 +21,7 @@ Controller::Controller(QGraphicsScene* scene, QObject* parent, int time, int len
 {
     this->scene = scene;
     this->snake = new Snake(scene, length);
-    this->time = time * 60000;
+    this->time = time * 50000;
     this->length = length;
     is_paused = false;
 
@@ -66,7 +66,7 @@ void Controller::start_timers() const
 {
     game_timer->start();
     fruit_timer->start(300);
-    poison_timer->start(3500);
+    poison_timer->start(3000);
     snake_timer->start(35);
 }
 
@@ -205,7 +205,7 @@ void Controller::keyPressEvent(QKeyEvent* keyEvent)
     switch (keyEvent->key()) {
     case Qt::Key_W:
     {
-        if(snake->get_ydir() <= zero && snake->get_direction() != Directions::Up)
+        if(snake->ydir <= zero && snake->get_direction() != Directions::Up)
         {
             snake->move_W();
         }
@@ -213,7 +213,7 @@ void Controller::keyPressEvent(QKeyEvent* keyEvent)
     }
     case Qt::Key_A:
     {
-        if(snake->get_xdir() <= zero && snake->get_direction() != Directions::Left)
+        if(snake->xdir <= zero && snake->get_direction() != Directions::Left)
         {
             snake->move_A();
         }
@@ -221,7 +221,7 @@ void Controller::keyPressEvent(QKeyEvent* keyEvent)
     }
     case Qt::Key_S:
     {
-        if(snake->get_ydir() >= zero && snake->get_direction() != Directions::Down)
+        if(snake->ydir >= zero && snake->get_direction() != Directions::Down)
         {
             snake->move_S();
         }
@@ -229,7 +229,7 @@ void Controller::keyPressEvent(QKeyEvent* keyEvent)
     }
     case Qt::Key_D:
     {
-        if(snake->get_xdir() >= zero && snake->get_direction() != Directions::Right)
+        if(snake->xdir >= zero && snake->get_direction() != Directions::Right)
         {
             snake->move_D();
         }

@@ -7,7 +7,7 @@
 #include "fruit.h"
 #include "poison.h"
 
-static int zero = 0;
+static double zero = 0;
 static int base_speed = 10;
 constexpr int snakeSize = 10;
 
@@ -40,7 +40,7 @@ QPainterPath Snake::shape() const
     for(auto point : body)
     {
         QPointF node = mapFromScene(point);
-        painterPath.addEllipse(QPointF(node.x(), node.y()), snakeSize * 0.75, snakeSize * 0.75);
+        painterPath.addEllipse(QPointF(node.x(), node.y()), snakeSize * 0.7, snakeSize * 0.7);
     }
 
     return painterPath;
@@ -120,12 +120,12 @@ void Snake::collision()
 
     for(auto item : collision)
     {
-        if (Fruit* fruit = dynamic_cast<Fruit*>(item))
+        if (Poison* poison = dynamic_cast<Poison*>(item)) {
+            poisoned = true;
+        }
+        else if (Fruit* fruit = dynamic_cast<Fruit*>(item))
         {
             eat(item);
-        }
-        else if (Poison* poison = dynamic_cast<Poison*>(item)) {
-            poisoned = true;
         }
     }
 }
