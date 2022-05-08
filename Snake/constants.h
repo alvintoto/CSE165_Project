@@ -10,8 +10,8 @@ enum Directions
 
 namespace Resolution {
 
-    constexpr int field_width = 700;
-    constexpr int field_height = 500;
+    constexpr int field_width = 750;
+    constexpr int field_height = 550;
 
 }
 

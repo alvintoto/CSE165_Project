@@ -17,7 +17,6 @@ public:
     QRectF boundingRect() const;
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *);
 
-
     bool hit_self() const;
     bool hit_wall() const;
     bool hit_poison() const;

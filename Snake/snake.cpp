@@ -21,14 +21,14 @@ int minus(int num1, int num2) {
 
 Snake::Snake(QGraphicsScene* scene, int length)
 {
-    head = QPointF(Resolution::field_width / 2, Resolution::field_height / 2);
+    this->head = QPointF(Resolution::field_width / 2, Resolution::field_height / 2);
     this->scene = scene;
-    speed = base_speed;
-    xdir = base_speed;
-    ydir = zero;
-    growing = length;
-    direction = Directions::Right;
-    poisoned = false;
+    this->speed = base_speed;
+    this->xdir = base_speed;
+    this->ydir = zero;
+    this->growing = length;
+    this->direction = Directions::Right;
+    this->poisoned = false;
 }
 
 QPainterPath Snake::shape() const
@@ -139,33 +139,33 @@ void Snake::move()
 
 void Snake::move_W()
 {
+    direction = Directions::Up;
     xdir = zero;
     ydir = -speed;
-    direction = Directions::Up;
     update_head();
 }
 
 void Snake::move_A()
 {
+    direction = Directions::Left;
     xdir = -speed;
     ydir = zero;
-    direction = Directions::Left;
     update_head();
 }
 
 void Snake::move_S()
 {
+    direction = Directions::Down;
     xdir = zero;
     ydir = speed;
-    direction = Directions::Down;
     update_head();
 }
 
 void Snake::move_D()
 {
-    xdir = speed;
-    ydir = zero;
     direction = Directions::Right;
+    xdir = speed;
+    ydir = zero;  
     update_head();
 }
 
@@ -183,7 +183,7 @@ void Snake::update_body()
     }
     else
     {
-        if(!body.isEmpty())
+        if(body.isEmpty() == false)
         {
             body.removeFirst();
         }
