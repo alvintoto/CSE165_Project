@@ -17,8 +17,8 @@ public:
     Controller(QGraphicsScene*, QObject* parent, int, int);
     ~Controller() override;
 
-    static int num_fruit;
-    static int score;
+    static long int num_fruit;
+    static long int score;
 
     bool is_paused;
 
@@ -36,8 +36,8 @@ private:
     QTimer* fruit_timer = nullptr;
     QTimer* poison_timer = nullptr;
 
-    int time;
-    int length;
+    long int time;
+    long int length;
 
     void start_timers() const;
     void stop_timers() const;

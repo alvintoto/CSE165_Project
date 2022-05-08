@@ -10,16 +10,6 @@ MainWindow::~MainWindow()
 {
 }
 
-int MainWindow::get_time() const
-{
-    return time;
-}
-
-int MainWindow::get_length() const
-{
-    return length;
-}
-
 void MainWindow::on_start_game_clicked()
 {
     length = 6;

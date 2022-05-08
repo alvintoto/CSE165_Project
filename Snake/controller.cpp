@@ -8,13 +8,23 @@
 #include "fruit.h"
 #include "poison.h"
 
-int Controller::num_fruit = 0;
-int Controller::score = 0;
+static int zero = 0;
 
-Controller::Controller(QGraphicsScene* scene, QObject* parent, int time, int length)
-          : QObject{ parent }, scene { scene }, snake { new Snake(scene, length) },
-            time{ time * 60000 }, length{ length }, is_paused { false }
+int add(int num1, int num2) {
+    return num1 + num2;
+}
+
+long int Controller::num_fruit = zero;
+long int Controller::score = zero;
+
+Controller::Controller(QGraphicsScene* scene, QObject* parent, int time, int length) : QObject{ parent }
 {
+    this->scene = scene;
+    this->snake = new Snake(scene, length);
+    this->time = time * 60000;
+    this->length = length;
+    is_paused = false;
+
     scene->addItem(snake);
     scene->installEventFilter(this);
 
@@ -55,7 +65,7 @@ void Controller::move_snake()
 void Controller::start_timers() const
 {
     game_timer->start();
-    fruit_timer->start(150);
+    fruit_timer->start(300);
     poison_timer->start(3500);
     snake_timer->start(35);
 }
@@ -75,7 +85,7 @@ void Controller::create_fruit()
     }
 
     scene->addItem(new Fruit(rand() % (Resolution::field_width - 10) + 5, rand() % (Resolution::field_height - 10) + 5));
-    num_fruit += 1;
+    num_fruit = add(num_fruit, 1);
 }
 
 void Controller::create_poison()
@@ -138,8 +148,8 @@ void Controller::dead()
 {
     stop_timers();
 
-    QMessageBox::StandardButton reply{ QMessageBox::question(nullptr, "GAME OVER", game_over(),
-                                                             QMessageBox::Yes | QMessageBox::No) };
+    QMessageBox::StandardButton reply{ QMessageBox::question(nullptr, "GAME OVER", game_over(), QMessageBox::Yes | QMessageBox::No) };
+
     switch(reply) {
     case QMessageBox::Yes:
         restart();
@@ -154,8 +164,8 @@ void Controller::dead()
 
 void Controller::restart()
 {
-    num_fruit = 0;
-    score = 0;
+    num_fruit = zero;
+    score = zero;
     scene->clear();
     snake = new Snake(scene, length);
     scene->addItem(snake);
@@ -195,7 +205,7 @@ void Controller::keyPressEvent(QKeyEvent* keyEvent)
     switch (keyEvent->key()) {
     case Qt::Key_W:
     {
-        if(snake->get_ydir() <= 0 && snake->get_direction() != Directions::Up)
+        if(snake->get_ydir() <= zero && snake->get_direction() != Directions::Up)
         {
             snake->move_W();
         }
@@ -203,7 +213,7 @@ void Controller::keyPressEvent(QKeyEvent* keyEvent)
     }
     case Qt::Key_A:
     {
-        if(snake->get_xdir() <= 0 && snake->get_direction() != Directions::Left)
+        if(snake->get_xdir() <= zero && snake->get_direction() != Directions::Left)
         {
             snake->move_A();
         }
@@ -211,7 +221,7 @@ void Controller::keyPressEvent(QKeyEvent* keyEvent)
     }
     case Qt::Key_S:
     {
-        if(snake->get_ydir() >= 0 && snake->get_direction() != Directions::Down)
+        if(snake->get_ydir() >= zero && snake->get_direction() != Directions::Down)
         {
             snake->move_S();
         }
@@ -219,7 +229,7 @@ void Controller::keyPressEvent(QKeyEvent* keyEvent)
     }
     case Qt::Key_D:
     {
-        if(snake->get_xdir() >= 0 && snake->get_direction() != Directions::Right)
+        if(snake->get_xdir() >= zero && snake->get_direction() != Directions::Right)
         {
             snake->move_D();
         }

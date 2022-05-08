@@ -1,5 +1,7 @@
 #include "field.h"
 
+static int zero = 0;
+
 Field::Field(int time, int length)
 {
     scene = new QGraphicsScene();
@@ -7,7 +9,7 @@ Field::Field(int time, int length)
     setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     setScene(scene);
     setFixedSize(Resolution::field_width, Resolution::field_height);
-    setSceneRect(0, 0, Resolution::field_width, Resolution::field_height);
+    setSceneRect(zero, zero, Resolution::field_width, Resolution::field_height);
 
     controller = new Controller{scene, nullptr, time, length};
 

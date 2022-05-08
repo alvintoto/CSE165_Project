@@ -4,7 +4,6 @@
 #include <QGraphicsItem>
 #include <QKeyEvent>
 #include <QPainter>
-#include <QVector>
 
 #include "constants.h"
 
@@ -40,18 +39,18 @@ public:
 
 private:
     QPointF head;
-    QVector<QPointF> body;
+    QList<QPointF> body;
 
     QGraphicsScene* scene = nullptr;
 
-    int speed;
+    long int speed;
 
     Directions direction;
-    int xdir;
-    int ydir;
+    long int xdir;
+    long int ydir;
 
-    int length;
-    int growing;
+    long int length;
+    long int growing;
 
     void eat(QGraphicsItem*);
 

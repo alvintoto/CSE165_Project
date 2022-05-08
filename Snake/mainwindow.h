@@ -17,17 +17,11 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void set_length(int value) { length = value; }
-    int get_length() const;
-
-    void set_time(int value) { time = value; }
-    int get_time() const;
+    long int time;
+    long int length;
 
 private:
     Ui::MainWindow ui;
-
-    int time;
-    int length;
 
 private slots:
     void on_start_game_clicked();
