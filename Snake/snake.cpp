@@ -106,7 +106,8 @@ bool Snake::hit_wall() const
     return false;
 }
 
-bool Snake::hit_poison() const {
+bool Snake::hit_poison() const
+{
     if (poisoned) {
         return true;
     }
