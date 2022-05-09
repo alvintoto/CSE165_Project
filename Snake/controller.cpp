@@ -95,7 +95,7 @@ void Controller::create_poison()
 
 void Controller::collision()
 {
-    if(hit_wall() || hit_self() || hit_poison())
+    if (hit_wall() || hit_self() || hit_poison())
     {
         dead();
     }
